@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Devis - Nettoyage de Vitres</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #0F222D;
+            background-color: #EBE7D9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(15, 34, 45, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            color: #EBE7D9;
+        }
+        h1, .section h2 {
+            text-align: center;
+            padding: 20px 0;
+            margin: 0;
+            background: linear-gradient(45deg, #0F222D, #1a3c4d);
+            color: #EBE7D9;
+            font-size: 2em;
+            letter-spacing: 2px;
+        }
+        .section h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .section-icon {
+            margin-right: 10px;
+            color: #EBE7D9;
+        }
+        .section-content {
+            padding: 30px;
+            background-color: #0F222D;
+            color: #EBE7D9;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .section-light {
+            background-color: #EBE7D9;
+            color: #0F222D;
+        }
+        .section-light h2 {
+            color: #0F222D;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 20px;
+            background-color: rgba(235, 231, 217, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(235, 231, 217, 0.2);
+        }
+        th {
+            background-color: rgba(15, 34, 45, 0.8);
+            color: #EBE7D9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section-light th {
+            background-color: rgba(235, 231, 217, 0.8);
+            color: #0F222D;
+        }
+        .cta-button {
+            display: block;
+            width: 250px;
+            margin: 40px auto;
+            padding: 15px;
+            background: linear-gradient(45deg, #0F222D, #1a3c4d);
+            color: #EBE7D9;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(15, 34, 45, 0.2);
+        }
+        .cta-button:hover {
+            background: linear-gradient(45deg, #1a3c4d, #0F222D);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(15, 34, 45, 0.3);
+        }
+        .input-table input {
+            width: 50px;
+            text-align: center;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 1.5em;
+            text-align: center;
+        }
+        .options ul {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+        }
+        @media (max-width: 768px) {
+            .input-table th, .input-table td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+            .input-table input {
+                width: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculateur de Devis - Nettoyage de Vitres</h1>
+
+        <div class="section">
+            <h2><i class="fas fa-home section-icon"></i>Résidentiel</h2>
+            <div class="section-content">
+                <table class="input-table">
+                    <tr>
+                        <th>Type de Fenêtre</th>
+                        <th>Intérieur et Extérieur</th>
+                        <th>Extérieur seulement</th>
+                        <th>Accès difficile/très sales</th>
+                    </tr>
+                    <tr>
+                        <td>Petites (≤ 1 m²)</td>
+                        <td><input type="number" id="res_petite_ie" value="0"></td>
+                        <td><input type="number" id="res_petite_e" value="0"></td>
+                        <td><input type="number" id="res_petite_diff" value="0"></td>
+                    </tr>
+                    <tr>
+                        <td>Grandes (> 1 m²)</td>
+                        <td><input type="number" id="res_grande_ie" value="0"></td>
+                        <td><input type="number" id="res_grande_e" value="0"></td>
+                        <td><input type="number" id="res_grande_diff" value="0"></td>
+                    </tr>
+                    <tr>
+                        <td>Baies Vitrées</td>
+                        <td><input type="number" id="res_baie_ie" value="0"></td>
+                        <td><input type="number" id="res_baie_e" value="0"></td>
+                        <td><input type="number" id="res_baie_diff" value="0"></td>
+                    </tr>
+                    <tr>
+                        <td>Portes-Fenêtres</td>
+                        <td><input type="number" id="res_porte_ie" value="0"></td>
+                        <td><input type="number" id="res_porte_e" value="0"></td>
+                        <td><input type="number" id="res_porte_diff" value="0"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-building section-icon"></i>Commercial</h2>
+            <div class="section-content">
+                <table class="input-table">
+                    <tr>
+                        <th>Type de Fenêtre</th>
+                        <th>Intérieur et Extérieur</th>
+                        <th>Extérieur seulement</th>
+                        <th>Accès difficile/très sales</th>
+                    </tr>
+                    <tr>
+                        <td>Petites (≤ 1 m²)</td>
+                        <td><input type="number" id="com_petite_ie" value="0"></td>
+                        <td><input type="number" id="com_petite_e" value="0"></td>
+                        <td><input type="number" id="com_petite_diff" value="0"></td>
+                    </tr>
+                    <tr>
+                        <td>Grandes (> 1 m²)</td>
+                        <td><input type="number" id="com_grande_ie" value="0"></td>
+                        <td><input type="number" id="com_grande_e" value="0"></td>
+                        <td><input type="number" id="com_grande_diff" value="0"></td>
+                    </tr>
+                    <tr>
+                        <td>Vitrines de Magasins</td>
+                        <td><input type="number" id="com_vitrine_ie" value="0"></td>
+                        <td><input type="number" id="com_vitrine_e" value="0"></td>
+                        <td><input type="number" id="com_vitrine_diff" value="0"></td>
+                    </tr>
+                    <tr>
+                        <td>Façades Vitrées</td>
+                        <td><input type="number" id="com_facade_ie" value="0"></td>
+                        <td><input type="number" id="com_facade_e" value="0"></td>
+                        <td><input type="number" id="com_facade_diff" value="0"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section section-light">
+            <h2>Services Additionnels</h2>
+            <table class="input-table">
+                <tr>
+                    <th>Service</th>
+                    <th>Quantité</th>
+                </tr>
+                <tr>
+                    <td>Nettoyage des Cadres de Fenêtres</td>
+                    <td><input type="number" id="cadre" value="0"></td>
+                </tr>
+                <tr>
+                    <td>Nettoyage des Moustiquaires</td>
+                    <td><input type="number" id="moustiquaire" value="0"></td>
+                </tr>
+                <tr>
+                    <td>Nettoyage des Volets</td>
+                    <td><input type="number" id="volet" value="0"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section section-light options">
+            <h2>Options</h2>
+            <ul>
+                <li>Déplacement : <input type="checkbox" id="deplacement" value="20"></li>
+                <li>Réduction de 10% pour 5 fenêtres ou plus nettoyées lors de la même intervention <span>(tarif groupe)</span> : <input type="checkbox" id="reduction"></li>
+            </ul>
+        </div>
+
+        <div class="section section-light">
+            <h2>Total</h2>
+            <p id="total" class="total">0 €</p>
+        </div>
+
+        <a href="#" class="cta-button" onclick="calculerDevis()">Calculer le Devis</a>
+    </div>
+
+    <script>
+        function calculerDevis() {
+            const tarifs = {
+                res_petite_ie: 7,
+                res_petite_e: 5,
+                res_petite_diff: 10,
+                res_grande_ie: 12,
+                res_grande_e: 8,
+                res_grande_diff: 15,
+                res_baie_ie: 20,
+                res_baie_e: 15,
+                res_baie_diff: 25,
+                res_porte_ie: 10,
+                res_porte_e: 7,
+                res_porte_diff: 12,
+                com_petite_ie: 10,
+                com_petite_e: 7,
+                com_petite_diff: 13,
+                com_grande_ie: 18,
+                com_grande_e: 12,
+                com_grande_diff: 22,
+                com_vitrine_ie: 25,
+                com_vitrine_e: 18,
+                com_vitrine_diff: 30,
+                com_facade_ie: 8,
+                com_facade_e: 6,
+                com_facade_diff: 10
+            };
+
+            let total = 0;
+
+            for (const id in tarifs) {
+                total += document.getElementById(id).value * tarifs[id];
+            }
+
+            total += document.getElementById('cadre').value * 2;
+            total += document.getElementById('moustiquaire').value * 3;
+            total += document.getElementById('volet').value * 4;
+
+            if (document.getElementById('deplacement').checked) {
+                total += 20;
+            }
+
+            if (document.getElementById('reduction').checked && total > 0) {
+                total *= 0.9;
+            }
+
+            document.getElementById('total').innerText = total.toFixed(2) + ' €';
+        }
+    </script>
+</body>
+</html>
